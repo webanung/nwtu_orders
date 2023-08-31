@@ -1,0 +1,23 @@
+{
+    "name": "weban-ug/nwtu_orders",
+    "type": "typo3-cms-extension",
+    "description": "",
+    "homepage": "https://www.weban.de",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "require": {
+        "typo3/cms-core": "^11.5",
+        "typo3/cms-rte-ckeditor": "^11.5",
+        "typo3/cms-fluid-styled-content": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "WebanUg\\SchminckedeFarbkarte\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "nwtu_orders"
+        }
+    }
+}

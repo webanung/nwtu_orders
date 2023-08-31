@@ -1,0 +1,27 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation=" ">
+    <div class="schminckede_farbkarte_container">
+        <f:form id="searchForm">
+            <f:for each="{filterArr}" as="filterCat">
+                <div style="float: left">
+                    <select name="category[]" id="cat_{filterCat.uid}">
+                        <option value="" label="{filterCat.title}">{filterCat.title}</option>
+                        <f:for each="{filterCat.options}" as="option">
+                            <option value="{option.uid}" label="{option.title}">{option.title}</option>
+                        </f:for>
+                    </select>
+
+                </div>
+            </f:for>
+            <div style="float: left">
+                <input type="button" id="searchButton" value="filtern">
+                <input type="hidden" id="ajaxUrl" value="{f:uri.action(action: 'listing', noCache: 1)}">
+            </div>
+        </f:form>
+    </div>
+    <br>
+    <div id="searchResult" class="schminckede_farbkarte_container">
+        <f:render section="searchResult" partial="Listing" arguments="{karten:karteArr,anz:anz,prefix:prefix}" />
+    </div>
+    <link rel="stylesheet" href="{prefix}/fileadmin/css/jquery-ui.min.css">
+    <div id="karteDlg"></div>
+</div>

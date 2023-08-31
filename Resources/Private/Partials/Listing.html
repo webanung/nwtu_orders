@@ -1,0 +1,67 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation=" ">
+  <f:section name="searchResult">
+    <f:if condition="{anz}>0">
+      <f:then>
+        <f:for each="{karten}" as="karte">
+          <div class="schminckede_farbkarte details" id="karte{karte.uid}" data-id="{karte.uid}">
+            <f:image src="/fileadmin{karte.images.0.identifier}" alt="{karte.title}" width="165"/>
+            <div>{karte.title}
+              <hr>
+            </div>
+            <div>{karte.teaser}</div>
+            <div><img src="{prefix}/fileadmin{karte.categories.0.images.0.identifier}"
+                      alt="{karte.categories.0.name}">
+            </div>
+            <div style="float:left;">
+              <f:for each="{karte.categories}" as="cat" iteration="iterator">
+                <f:if condition="!{iterator.isFirst}">
+                  <div style="float:left;width: 30px">
+                    <img src="{prefix}/fileadmin{cat.images.0.identifier}" alt="{cat.name}"/>
+                  </div>
+                </f:if>
+              </f:for>
+              <div id="text{karte.uid}" style="display:none">
+                <div class="schminckede_farbkarte_detail" style="width: 100%">
+                  <div>
+                    <f:image src="/fileadmin{karte.images.0.identifier}" alt="" width="200"/>
+                  </div>
+                  <div class="schminckede_farbkarte_beschreibung">
+                    <div class="artikelName">{karte.teaser} {karte.title}</div>
+
+                    <div>
+                      <f:translate key="tx_schminckede_farbkarte.artNoText"/>
+                      .: {karte.description}</div>
+                    <br>
+                    <f:format.html>{karte.bodytext}<br><a class="button button04" href="{prefix}/kaufen/haendlersuche-global">Händler finden</a></f:format.html>
+                    <br>
+                    <f:translate key="tx_schminckede_farbkarte.specText"/>
+                    <br>
+                    <div class="schmincke_de_wrap">
+                      <div>
+                        <f:for each="{karte.categories}" as="cat" iteration="iterator">
+                          <img src="{prefix}/fileadmin{cat.images.0.identifier}"
+                               alt="{cat.name}">&nbsp;{cat.name}
+                        </f:for>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </f:for>
+      </f:then>
+      <f:else>
+        <f:translate key="tx_schminckede_farbkarte.noresult"/>
+      </f:else>
+    </f:if>
+    <f:if condition="{filtered}==true">
+      <script>
+        $(function () {
+          $('.details').on("click", showKarte);
+        })
+      </script>
+    </f:if>
+  </f:section>
+
+</div>

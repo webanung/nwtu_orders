@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-08-06T13:26:14Z" product-name="schminckede_farbkarte">
+		<header/>
+		<body>
+			<trans-unit id="tx_schminckede_farbkarte.specText">
+				<source>Specifications</source>
+			</trans-unit>
+			<trans-unit id="tx_schminckede_farbkarte.artNoText">
+				<source>Article-No</source>
+			</trans-unit>
+			<trans-unit id="tx_schminckede_farbkarte.noresult">
+				<source>No results found</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
