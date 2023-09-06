@@ -137,7 +137,7 @@
 .bestellung .yellow {
     background-color:#f9d408;
 }
-#user_confirm {
+#user_confirm_order {
 	float:left;
 	margin:0 10px 0 0;
 }
@@ -321,9 +321,9 @@
     </tr>
 	<tr>
 		<td colspan="5">
-			<input type="checkbox" name="Datenschutzbestätigung" id="user_confirm" class="req yellow" />
+			<input type="checkbox" name="Datenschutzbestätigung" id="user_confirm_order" class="req yellow" />
 			<input type="hidden" name="req[]" value="Datenschutzbestätigung" />
-			<p><label for="user_confirm"><b>Ich stimme zu, dass meine Angaben aus dem Formular zur Beantwortung
+			<p><label for="user_confirm_order"><b>Ich stimme zu, dass meine Angaben aus dem Formular zur Beantwortung
 meiner Anfrage erhoben und verarbeitet werden.</b>
 <br>
  Die Daten werden nach
