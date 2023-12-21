@@ -4,10 +4,13 @@
 
     use Doctrine\DBAL\DBALException;
     use Doctrine\DBAL\Driver\Exception;
+    use Symfony\Component\Mime\Address;
     use TYPO3\CMS\Core\Context\Context;
     use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
+    use TYPO3\CMS\Core\Mail\MailMessage;
     use TYPO3\CMS\Core\Utility\GeneralUtility;
     use TYPO3\CMS\Core\Database\ConnectionPool;
+    use TYPO3\CMS\Core\Utility\MailUtility;
     use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
     class OrderController extends ActionController
@@ -96,7 +99,16 @@
                         }
                     }
 
-                    if ( mail( $to, $subject, $item . "<br /><br />" . $msg, $header ) )
+                    $mail = GeneralUtility::makeInstance( MailMessage::class );
+                    $mail->setFrom( MailUtility::getSystemFrom() );
+                    $mail->to(
+                        new Address( $to )
+                    );
+                    $mail->setReplyTo( $from );
+                    $mail->subject( $subject );
+                    $mail->html( $item . "<br><br>" . $msg );;
+                    $res = $mail->send();
+                    if ( $res )
                     {
                         $html = "<p>Vielen Dank für Ihre Bestellung. Wir werden sie schnellstmöglich bearbeiten.</p>";
                     }
